@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe UsersController do
+
+  describe '.index' do
+    it 'gets all the users' do
+      expect(User).to receive(:all)
+      get :index
+    end
+  end
+
   describe '.new' do
     it 'assigns a blank user' do
       expect(User).to receive(:new)
@@ -33,6 +41,12 @@ describe UsersController do
     end
   end
 
+  describe '#edit' do
+    it ' finds the user to be edited' do
+      expect(User).to receive(:find_by).with(id: '2')
+      get :edit, id: 2
+    end
+  end
   describe '#update' do
     let(:params) { { name: 'Bert', email: 'bert@example.com' } }
     let!(:user)  { User.create!(name: 'Fred', email: 'fred@example.com', password: 'secret', password_confirmation: 'secret') }
