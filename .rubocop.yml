@@ -1,0 +1,22 @@
+AllCops:
+  RunRailsCops: true
+  Include:
+    - '**/Rakefile'
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+
+Metrics/LineLength:
+  Max: 150
+  AllowURI: true
+
+Metrics/AbcSize:
+  Max: 25
+
+Style/Documentation:
+  Enabled: false
+
+Style/PredicateName:
+  NamePrefixBlacklist:
+    - get_
+    - set_
