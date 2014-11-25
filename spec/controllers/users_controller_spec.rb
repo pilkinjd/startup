@@ -57,4 +57,22 @@ describe UsersController do
       expect(response).to render_template(:edit)
     end
   end
+
+  describe '#destroy' do
+    let!(:user)  { User.create!(name: 'Fred', email: 'fred@example.com', password: 'secret', password_confirmation: 'secret') }
+
+    before do
+      allow(User).to receive(:find_by).with(id: user.id.to_s).and_return(user)
+    end
+
+    it 'destroys the user' do
+      expect(user).to receive(:destroy)
+      delete :destroy, id: user.id
+    end
+
+    it 'redirects to the user index page' do
+      delete :destroy, id: user.id
+      expect(response).to redirect_to(users_path)
+    end
+  end
 end
