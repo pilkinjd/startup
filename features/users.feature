@@ -16,8 +16,8 @@ Feature: managing the users
     And  I edit an existing user
     Then I should see the user has been updated
 
-    @wip
   Scenario: deleting a user
     Given there are some users
-    When I delete an existing user
+    When I go to the users page
+    And  I delete an existing user
     Then I should see the user has been deleted
