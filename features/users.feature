@@ -10,14 +10,14 @@ Feature: managing the users
     And  I fill in the new user form
     Then I should see the new user is created
 
-    @wip
   Scenario: editing a user
     Given there are some users
-    When I edit an existing user
+    When I go to the users page
+    And  I edit an existing user
     Then I should see the user has been updated
 
     @wip
   Scenario: deleting a user
     Given there are some users
-    When I deelte an existing user
+    When I delete an existing user
     Then I should see the user has been deleted

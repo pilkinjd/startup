@@ -17,10 +17,24 @@ When 'I fill in the new user form' do
   fill_in('Email',        with: 'barney@example.com')
   fill_in('Password',     with: 'secret')
   fill_in('Confirmation', with: 'secret')
-  click_on('Create account')
+  click_on('Create User')
 end
 
 Then 'I should see the new user is created' do
-  expect(page).to have_content('User was successfully created ')
+  expect(page).to have_content('User was successfully created.')
   expect(User.find_by(email: 'barney@example.com')).to be_truthy
+end
+
+When 'I edit an existing user' do
+  user = User.find_by(name: 'Fred')
+
+  click_link("edit_#{user.id}")
+
+  fill_in('Name', with: 'Betty')
+  click_on('Update User')
+end
+
+Then 'I should see the user has been updated' do
+  expect(page).to have_content('User was successfully updated.')
+  expect(User.find_by(email: 'fred@example.com').name).to eq('Betty')
 end
