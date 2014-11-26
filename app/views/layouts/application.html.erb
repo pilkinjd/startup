@@ -28,6 +28,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <% if logged_in? %>
+                <span><%= current_user.name %></span>
                 <li><%= link_to 'Log out', sessions_path, method: :delete %></li>
               <% else %>
                 <li><%= link_to 'Log in', sessions_new_path %></li>
