@@ -11,7 +11,7 @@ RSpec.describe SessionsController, type: :routing do
     end
 
     it 'routes to #destroy' do
-      expect(delete: '/sessions/1').to route_to('sessions#destroy', id: '1')
+      expect(delete: '/sessions').to route_to('sessions#destroy')
     end
   end
 end

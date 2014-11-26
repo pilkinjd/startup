@@ -12,6 +12,6 @@ When 'they complete the login form' do
 end
 
 Then 'they should see they are logged in' do
-  expect(page).to have_content('Fred')
   expect(page).to have_content('Log out')
+  expect(page).to have_content('Fred')
 end

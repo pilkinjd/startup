@@ -3,6 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    redirect_to root_path
+    user = User.find_by(email: params[:sessions][:email])
+    if user && user.authenticate(params[:sessions][:password])
+      reset_session
+      session[:current_user_id] = user.id
+      redirect_to root_path
+    else
+      flash[:action] = 'Invalid username/password combination'
+      render :new
+    end
   end
 end
