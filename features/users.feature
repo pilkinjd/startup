@@ -5,7 +5,6 @@ Feature: managing the users
     When I go to the users page
     Then I should see the users
 
-    @wip
   Scenario: adding a new user
     When I go to the users page
     And  I fill in the new user form

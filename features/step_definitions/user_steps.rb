@@ -10,3 +10,17 @@ end
 Then 'I should see the users' do
   expect(page).to have_content('Users')
 end
+
+When 'I fill in the new user form' do
+  click_link('New User')
+  fill_in('Name',         with: 'Barney Rubble')
+  fill_in('Email',        with: 'barney@example.com')
+  fill_in('Password',     with: 'secret')
+  fill_in('Confirmation', with: 'secret')
+  click_on('Create account')
+end
+
+Then 'I should see the new user is created' do
+  expect(page).to have_content('User was successfully created ')
+  expect(User.find_by(email: 'barney@example.com')).to be_truthy
+end
