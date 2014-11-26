@@ -4,9 +4,11 @@ When 'the user goes to log in' do
 end
 
 When 'they complete the login form' do
-  fill_in('Email',    with: 'fred@example.com')
-  fill_in('Password', with: 'secret')
-  click_on('Log in')
+  within('#login_form') do
+    fill_in('Email',    with: 'fred@example.com')
+    fill_in('Password', with: 'secret')
+    click_on('Log in')
+  end
 end
 
 Then 'they should see they are logged in' do
