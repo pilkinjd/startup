@@ -13,4 +13,3 @@ Then 'they should see they are logged in' do
   expect(page).to have_content('Fred')
   expect(page).to have_content('Log out')
 end
-
