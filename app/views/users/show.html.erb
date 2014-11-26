@@ -1,22 +1,21 @@
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class='col-lg-6 col-lg-offset-3'>
+<table class='table table-condensed table-striped'>
+  <tr>
+    <th>Name:</th>
+    <td><%= @user.name %></td>
+  </tr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <tr>
+    <th>Email:</th>
+    <td><%= @user.email %></td>
+  </tr>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
+  <tr>
+    <th>Admin:</th>
+    <td><span class='glyphicon glyphicon-<%= @user.admin ? 'ok-circle' : 'remove-circle' %>'</td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>
