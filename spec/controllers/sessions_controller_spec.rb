@@ -73,4 +73,15 @@ describe SessionsController do
 
   end
 
+  describe 'DELETE /sessions' do
+    it 'removes the current_user_id from the session' do
+      session[:current_user_id]
+      delete :destroy
+      expect(session[:current_user_id]).to be_nil
+    end
+
+    it 'redirects to the root page' do
+      expect(delete :destroy).to redirect_to(root_path)
+    end
+  end
 end
