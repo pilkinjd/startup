@@ -19,6 +19,7 @@ Feature: managing the users
     Then I should see the user has been updated
 
   Scenario: deleting a user
+    Given I am logged in as an admin
     When I go to the users page
     And  I delete an existing user
     Then I should see the user has been deleted

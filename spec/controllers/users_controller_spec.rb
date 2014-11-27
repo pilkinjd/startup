@@ -3,7 +3,8 @@ require 'rails_helper'
 describe UsersController do
 
   before do
-    session[:current_user_id] = 5
+    admin_user = User.create!(name: 'admin', email: 'admin@example.com', password: 'secret', password_confirmation: 'secret', admin: true)
+    session[:current_user_id] = admin_user.id
   end
 
   describe '.index' do

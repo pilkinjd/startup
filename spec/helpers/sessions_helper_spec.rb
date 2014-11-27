@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe SessionsHelper do
-
   describe 'current_user' do
     it 'returns the logged in user' do
       user = User.create(name: 'Fred', email: 'fred@example.com', password: 'secret', password_confirmation: 'secret')
