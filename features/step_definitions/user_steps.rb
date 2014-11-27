@@ -1,6 +1,6 @@
 Given 'there are some users' do
   User.create!(name: 'Fred', email: 'fred@example.com', password: 'secret', password_confirmation: 'secret')
-  User.create!(name: 'Bert', email: 'bert@example.com', password: 'secret', password_confirmation: 'secret')
+  User.create!(name: 'Bert', email: 'bert@example.com', password: 'secret', password_confirmation: 'secret', admin: true)
 end
 
 When 'I go to the users page' do
