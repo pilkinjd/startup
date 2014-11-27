@@ -1,7 +1,10 @@
 Feature: managing the users
 
-  Scenario: Showing all the users
+  Background:
     Given there are some users
+    And I am logged in
+
+  Scenario: Showing all the users
     When I go to the users page
     Then I should see the users
 
@@ -11,13 +14,11 @@ Feature: managing the users
     Then I should see the new user is created
 
   Scenario: editing a user
-    Given there are some users
     When I go to the users page
     And  I edit an existing user
     Then I should see the user has been updated
 
   Scenario: deleting a user
-    Given there are some users
     When I go to the users page
     And  I delete an existing user
     Then I should see the user has been deleted

@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe UsersController do
 
+  before do
+    session[:current_user_id] = 5
+  end
+
   describe '.index' do
     it 'gets all the users' do
       expect(User).to receive(:all)

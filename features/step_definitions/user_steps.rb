@@ -40,12 +40,12 @@ Then 'I should see the user has been updated' do
 end
 
 When 'I delete an existing user' do
-  user = User.find_by(name: 'Fred')
+  user = User.find_by(name: 'Bert')
 
   click_link("delete_#{user.id}")
 end
 
 Then 'I should see the user has been deleted' do
   expect(page).to have_content('User was successfully destroyed.')
-  expect(User.find_by(email: 'fred@example.com')).to be_nil
+  expect(User.find_by(email: 'bert@example.com')).to be_nil
 end

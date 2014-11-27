@@ -7,9 +7,8 @@ Given 'I am logged in' do
   end
 end
 
-When 'the user goes to log in' do
-  visit users_path
-  click_on 'Log in'
+When 'the user goes to the log in page' do
+  visit sessions_new_path
 end
 
 When 'they complete the login form' do
@@ -31,4 +30,13 @@ end
 
 Then 'I should see the user is logged out' do
   expect(page).to have_content('Log in')
+end
+
+When 'I go to a protected page' do
+  user = User.find_by(email: 'fred@example.com')
+  visit user_path(user)
+end
+
+Then 'I should be redirected to the login page' do
+  expect(page).to have_content('Please log in')
 end
