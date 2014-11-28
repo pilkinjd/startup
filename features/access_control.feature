@@ -12,7 +12,6 @@ Feature: Access control to pages
     When I go to an admin only page
     Then I should see the admin only page
 
-  @wip
   Scenario: trying to access admin pages as mere mortal
     Given I am logged in
     When I go to an admin only page
