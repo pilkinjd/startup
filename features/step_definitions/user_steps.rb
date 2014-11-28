@@ -50,3 +50,12 @@ Then 'I should see the user has been deleted' do
   expect(page).to have_content('User was successfully destroyed.')
   expect(User.find_by(email: 'victim@example.com')).to be_nil
 end
+
+When 'I try and delete myself' do
+  me = User.find_by(name: 'Bert')
+  click_link("delete_#{me.id}")
+end
+
+Then 'I should see this is not allowed' do
+  expect(page).to have_content('You cannot delete yourself')
+end

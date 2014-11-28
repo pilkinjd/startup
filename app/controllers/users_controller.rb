@@ -35,8 +35,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to users_url, alert: 'User was successfully destroyed.'
+    if current_user == @user
+      redirect_to(current_user, alert: 'You cannot delete yourself.')
+    else
+      @user.destroy
+      redirect_to users_url, alert: 'User was successfully destroyed.'
+    end
   end
 
   private

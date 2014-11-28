@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe UsersController do
+  let!(:admin_user) { User.create!(name: 'admin', email: 'admin@example.com', password: 'secret', password_confirmation: 'secret', admin: true) }
 
   before do
-    admin_user = User.create!(name: 'admin', email: 'admin@example.com', password: 'secret', password_confirmation: 'secret', admin: true)
     session[:current_user_id] = admin_user.id
   end
 
@@ -81,7 +81,14 @@ describe UsersController do
     let!(:user)  { User.create!(name: 'Fred', email: 'fred@example.com', password: 'secret', password_confirmation: 'secret') }
 
     before do
+      allow(User).to receive(:find_by).with(id: admin_user.id.to_s).and_return(admin_user)
       allow(User).to receive(:find_by).with(id: user.id.to_s).and_return(user)
+    end
+
+    it 'will not let you commit suicide' do
+      delete :destroy, id: admin_user.id
+      expect(flash[:alert]).to eq('You cannot delete yourself.')
+      expect(response).to redirect_to(user_path(admin_user))
     end
 
     it 'destroys the user' do

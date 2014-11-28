@@ -23,3 +23,9 @@ Feature: managing the users
     When I go to the users page
     And  I delete an existing user
     Then I should see the user has been deleted
+
+  Scenario: we cannot delete ourselves
+    Given I am logged in as an admin
+    When I go to the users page
+    And I try and delete myself
+    Then I should see this is not allowed
